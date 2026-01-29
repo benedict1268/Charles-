@@ -2,61 +2,58 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>CEELX | Beachfront Accommodation</title>
+  <title>Ceelx Beach Stay – Malindi</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <section class="hero">
-  <div class="overlay"></div>
+  <div class="overlay">
+    <h1>Ceelx Beach Stay</h1>
+    <p>Clean • Comfortable • Beach Fresh • Strong Wi-Fi</p>
 
-  <header class="navbar">
-    <h2>CEELX</h2>
-    <nav>
-      <a href="#book">Book</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
-
-  <div class="content">
-    <h1>Welcome to CEELX</h1>
-    <p>
-      Comfortable beachfront accommodation in Malindi —  
-      clean, affordable, and welcoming for everyone.
-    </p>
-
-    <!-- BOOKING -->
-    <div class="booking" id="book">
-      <select id="stayType">
-        <option value="Single Person - $12/day">Single Person — $12/day</option>
-        <option value="Couple - $15/day">Couple — $15/day</option>
-        <option value="Family - $20/day">Family — $20/day</option>
+    <div class="box">
+      <label>Stay Type</label>
+      <select id="type" onchange="calculate()">
+        <option value="10">Single – $10/day</option>
+        <option value="15">Couple – $15/day</option>
+        <option value="20">Family – $20/day</option>
       </select>
 
-      <input type="date" id="checkIn">
-      <input type="date" id="checkOut">
+      <label>Check-in</label>
+      <input type="date" id="checkin" onchange="calculate()">
 
-      <button onclick="sendWhatsApp()">Book via WhatsApp</button>
-      <button onclick="payWithPayPal()" class="paypal">Pay with PayPal</button>
-    </div>
+      <label>Check-out</label>
+      <input type="date" id="checkout" onchange="calculate()">
 
-    <!-- FEATURES -->
-    <div class="features">
-      🌊 Near the ocean  
-      ✨ Clean & fresh  
-      ⚡ Strong free Wi-Fi  
-      🔒 Secure  
-      👨‍👩‍👧 Family friendly
+      <p class="total">Total: $<span id="total">0</span></p>
+
+      <button onclick="payPayPal()">Pay with Card / PayPal</button>
+      <button class="mpesa" onclick="payMpesa()">Pay with M-PESA</button>
+      <button class="whatsapp" onclick="bookWhatsApp()">Book via WhatsApp</button>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
-<section class="contact" id="contact">
-  <a href="https://wa.me/254743934502" class="whatsapp">WhatsApp</a>
-  <a href="https://instagram.com/ceelx16" class="instagram">Instagram</a>
+<!-- FEATURES TAB -->
+<section class="features">
+  <h2>Why Choose Us</h2>
+  <ul>
+    <li>🧹 Very clean & well maintained</li>
+    <li>🛋️ Modern living room & sofa set</li>
+    <li>📶 Strong FREE Wi-Fi</li>
+    <li>🌊 Close to Malindi Beach</li>
+    <li>🛡️ Safe, quiet & private</li>
+  </ul>
 </section>
+
+<!-- REACH OUT -->
+<footer>
+  <h3>Reach Out</h3>
+  <a href="https://wa.me/254743934502" target="_blank">WhatsApp</a>
+  <a href="https://instagram.com/ceelx16" target="_blank">Instagram</a>
+</footer>
 
 <script src="script.js"></script>
 </body>
