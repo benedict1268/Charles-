@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CEELX | Beachfront Accommodation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<section class="hero">
+  <div class="overlay"></div>
+
+  <header class="navbar">
+    <h2>CEELX</h2>
+    <nav>
+      <a href="#book">Book</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="content">
+    <h1>Welcome to CEELX</h1>
+    <p>
+      Comfortable beachfront accommodation in Malindi —  
+      clean, affordable, and welcoming for everyone.
+    </p>
+
+    <!-- BOOKING -->
+    <div class="booking" id="book">
+      <select id="stayType">
+        <option value="Single Person - $12/day">Single Person — $12/day</option>
+        <option value="Couple - $15/day">Couple — $15/day</option>
+        <option value="Family - $20/day">Family — $20/day</option>
+      </select>
+
+      <input type="date" id="checkIn">
+      <input type="date" id="checkOut">
+
+      <button onclick="sendWhatsApp()">Book via WhatsApp</button>
+      <button onclick="payWithPayPal()" class="paypal">Pay with PayPal</button>
+    </div>
+
+    <!-- FEATURES -->
+    <div class="features">
+      🌊 Near the ocean  
+      ✨ Clean & fresh  
+      ⚡ Strong free Wi-Fi  
+      🔒 Secure  
+      👨‍👩‍👧 Family friendly
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <a href="https://wa.me/254743934502" class="whatsapp">WhatsApp</a>
+  <a href="https://instagram.com/ceelx16" class="instagram">Instagram</a>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
