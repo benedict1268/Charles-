@@ -1,81 +1,60 @@
-// Calculate number of days between two dates
-function calculateDays(start, end) {
-  const startDate = new Date(start);
-  const endDate = new Date(end);
-  const diffTime = endDate - startDate;
-  if (diffTime <= 0) return 0;
-  return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+function calculate() {
+  let price = Number(document.getElementById("type").value);
+  let checkin = new Date(document.getElementById("checkin").value);
+  let checkout = new Date(document.getElementById("checkout").value);
+
+  if (checkout > checkin) {
+    let days = (checkout - checkin) / (1000 * 60 * 60 * 24);
+    document.getElementById("total").innerText = price * days;
+  } else {
+    document.getElementById("total").innerText = 0;
+  }
 }
 
-// Send WhatsApp booking
-function sendWhatsApp() {
-  const stay = document.getElementById("stayType").value;
-  const checkIn = document.getElementById("checkIn").value;
-  const checkOut = document.getElementById("checkOut").value;
-
-  if (!checkIn || !checkOut) {
-    alert("Please select both check-in and check-out dates.");
-    return;
+function payPayPal() {
+  let total = document.getElementById("total").innerText;
+  if (total > 0) {
+    window.location.href = `https://www.paypal.me/CharlesNdonye/${total}`;
+  } else {
+    alert("Select valid dates first.");
   }
-
-  const days = calculateDays(checkIn, checkOut);
-  if (days <= 0) {
-    alert("Check-out must be after check-in.");
-    return;
-  }
-
-  // Determine price per type
-  let pricePerDay = 0;
-  if (stay.includes("Single Person")) pricePerDay = 12;
-  else if (stay.includes("Couple")) pricePerDay = 15;
-  else if (stay.includes("Family")) pricePerDay = 20;
-
-  const total = days * pricePerDay;
-
-  const message =
-    `Hello CEELX 👋%0A%0A` +
-    `Booking request:%0A` +
-    `${stay}%0A` +
-    `Check-in: ${checkIn}%0A` +
-    `Check-out: ${checkOut}%0A` +
-    `Number of days: ${days}%0A` +
-    `Total Price: $${total}%0A%0A` +
-    `Kindly confirm availability and payment details.`;
-
-  const phone = "254743934502"; // <-- Replace with your WhatsApp number
-  window.open(`https://wa.me/${phone}?text=${message}`, "_blank");
 }
 
-// PayPal button with total price
-function payWithPayPal() {
-  const stay = document.getElementById("stayType").value;
-  const checkIn = document.getElementById("checkIn").value;
-  const checkOut = document.getElementById("checkOut").value;
-
-  if (!checkIn || !checkOut) {
-    alert("Please select both check-in and check-out dates before paying.");
-    return;
+function payMpesa() {
+  let total = document.getElementById("total").innerText;
+  if (total > 0) {
+    alert(
+      `M-PESA STK REQUEST\n\n` +
+      `An STK prompt will be sent to:\n` +
+      `0743934502\n\n` +
+      `Amount: USD ${total}\n\n` +
+      `After paying, confirm via WhatsApp.`
+    );
+    bookWhatsApp();
+  } else {
+    alert("Select valid dates first.");
   }
+}
 
-  const days = calculateDays(checkIn, checkOut);
-  if (days <= 0) {
-    alert("Check-out must be after check-in.");
-    return;
-  }
+function bookWhatsApp() {
+  let typeText = document.getElementById("type").options[
+    document.getElementById("type").selectedIndex
+  ].text;
+  let checkin = document.getElementById("checkin").value;
+  let checkout = document.getElementById("checkout").value;
+  let total = document.getElementById("total").innerText;
 
-  // Determine price per type
-  let pricePerDay = 0;
-  if (stay.includes("Single Person")) pricePerDay = 12;
-  else if (stay.includes("Couple")) pricePerDay = 15;
-  else if (stay.includes("Family")) pricePerDay = 20;
+  let message =
+    `Hello Ceelx Beach Stay 👋\n\n` +
+    `Booking request:\n` +
+    `Type: ${typeText}\n` +
+    `Check-in: ${checkin}\n` +
+    `Check-out: ${checkout}\n` +
+    `Total: $${total}\n\n` +
+    `I am ready to pay / have paid via M-PESA.`;
 
-  const total = days * pricePerDay;
-
-  // Replace with your PayPal email
-  const paypalEmail = "youremail@example.com";
-
-  // Create PayPal payment link
-  const paypalLink ="ceelx16@gmail.com" `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=${paypalEmail}&amount=${total}&currency_code=USD&item_name=${encodeURIComponent(stay)}`;
-
-  window.open(paypalLink, "_blank");
+  window.open(
+    `https://wa.me/254743934502?text=${encodeURIComponent(message)}`,
+    "_blank"
+  );
 }
