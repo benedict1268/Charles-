@@ -22,18 +22,38 @@ function payPayPal() {
 
 function payMpesa() {
   let total = document.getElementById("total").innerText;
-  if (total > 0) {
-    alert(
-      `M-PESA STK REQUEST\n\n` +
-      `An STK prompt will be sent to:\n` +
-      `0743934502\n\n` +
-      `Amount: USD ${total}\n\n` +
-      `After paying, confirm via WhatsApp.`
-    );
-    bookWhatsApp();
-  } else {
+ if (total) {
+  // extract USD number from "Total: $30"
+  let usd = Number(total.replace(/[^0-9]/g, ""));
+
+  if (usd <= 0) {
     alert("Select valid dates first.");
+    return;
   }
+
+  // conversion
+  let ksh = usd * 129;
+
+  alert(
+    "M-PESA PAYMENT\n\n" +
+    "Amount: KES " + ksh + "\n\n" +
+    "Pay to:\n" +
+    "0743 934 502\n\n" +
+    "Steps:\n" +
+    "1. Dial *334#\n" +
+    "2. Choose Send Money\n" +
+    "3. Enter number: 0743934502\n" +
+    "4. Enter amount: " + ksh + "\n" +
+    "5. Confirm with M-PESA PIN"
+  );
+
+  // open dial app
+  window.location.href = "tel:*334#";
+
+} else {
+  alert("Select valid dates first.");
+}
+    
 }
 
 function bookWhatsApp() {
