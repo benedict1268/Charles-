@@ -13,7 +13,6 @@ function calculate() {
 
 function payPayPal() {
   calculate(); // 👈 force update
-
   let total = document.getElementById("total").innerText;
   if (Number(total) > 0) {
   const usd = Number(total);
