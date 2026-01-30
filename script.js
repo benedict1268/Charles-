@@ -13,10 +13,13 @@ function calculate() {
 
 function payPayPal() {
   let total = document.getElementById("total").innerText;
-  if (total > 0) {
-    window.location.href = `https://www.paypal.me/CharlesNdonye/${total}`;
-  } else {
-    alert("Select valid dates first.");
+  if (Number(total) > 0) {
+  const usd = Number(total);
+
+  window.location.href =
+    `https://www.paypal.me/CharlesNdonye/${usd}?currencyCode=USD`;
+} else {
+  alert("Select valid dates first.");
   }
 }
 
