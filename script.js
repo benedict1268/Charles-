@@ -12,12 +12,17 @@ function calculate() {
 }
 
 function payPayPal() {
+  calculate(); // 👈 force update
+
   let total = document.getElementById("total").innerText;
-  if (total > 0) {
-    window.location.href = `https://www.paypal.me/CharlesNdonye/${total}`;
-  } else {
-    alert("Select valid dates first.");
-  }
+  if (Number(total) > 0) {
+  const usd = Number(total);
+
+  window.location.href =
+    `https://www.paypal.me/CharlesNdonye/${usd}?currencyCode=USD`;
+} else {
+  alert("Select valid dates first.");
+}
 }
 
 function payMpesa() {
@@ -78,3 +83,6 @@ function bookWhatsApp() {
     "_blank"
   );
 }
+document.addEventListener("DOMContentLoaded", () => {
+  calculate();
+});
