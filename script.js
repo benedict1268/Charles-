@@ -15,7 +15,7 @@ function payPayPal() {
   calculate(); // 👈 force update
   let total = document.getElementById("total").innerText;
   if (Number(total) > 0) {
-  const usd = Number(total);
+  const usd = Number("total");
 
   window.location.href =
     `https://www.paypal.me/CharlesNdonye/${usd}?currencyCode=USD`;
