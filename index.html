@@ -16,9 +16,9 @@
     <div class="box">
       <label>Stay Type</label>
       <select id="type" onchange="calculate()">
-        <option value="80">Single – $80/day</option>
-        <option value="70">Couple – $70/day</option>
-        <option value="50">Family – $50/day</option>
+        <option value="10">Single – $10/day</option>
+        <option value="15">Couple – $15/day</option>
+        <option value="20">Family – $20/day</option>
       </select>
 
       <label>Check-in</label>
@@ -29,7 +29,7 @@
 
       <p class="total">Total: $<span id="total">0</span></p>
 
-      <button onclick="payPayPal()">Pay with Card / PayPal</button>
+      <button onclick="payPayPal()">Pay with Visa / MasterCard / PayPal</button>
       <button class="mpesa" onclick="payMpesa()">Pay with M-PESA</button>
       <button class="whatsapp" onclick="bookWhatsApp()">Book via WhatsApp</button>
     </div>
