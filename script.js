@@ -12,15 +12,16 @@ function calculate() {
 }
 
 function payPayPal() {
-  calculate(); // 👈 force update
-  let total = document.getElementById("total").innerText;
-  if (Number(total) > 0) {
-  const usd = Number("total");
+  calculate(); // force update
 
-  window.location.href =
-    `https://www.paypal.me/CharlesNdonye/${usd}?currencyCode=USD`;
-} else {
-  alert("Select valid dates first.");
+  let totalText = document.getElementById("total").innerText;
+  let usd = Number(totalText);
+
+  if (usd > 0) {
+    window.location.href =
+      `https://www.paypal.me/CharlesNdonye/${usd}?currencyCode=USD`;
+  } else {
+    alert("Select valid dates first.");
   }
 }
 
