@@ -19,7 +19,7 @@ function payPayPal() {
   const usd = Number(total);
 
   window.location.href =
-    `https://www.paypal.me/CharlesNdonye/${usd}?currencyCode=USD`;
+    `https://www.paypal.me/CharlesNdonye/${total}?currencyCode=USD`;
 } else {
   alert("Select valid dates first.");
 }
